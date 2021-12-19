@@ -18,4 +18,8 @@ RUN bash get-extensions.sh LDAPAuthorization \
     LDAPGroups \
     LDAPProvider \
     LDAPUserInfo \
-    PluggableAuth
+    PluggableAuth \
+    AdvancedSearch \
+    Elastica \
+    CirrusSearch \
+    TimedMediaHandler
