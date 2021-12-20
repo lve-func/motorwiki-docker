@@ -1,0 +1,33 @@
+{
+	"bucketheadland.com": {
+		"connection": {
+			"server": "WIN-4DJ2PNUGD1H.bucketheadland.com",
+			"port": "3268",
+			"user": "CN=Administrator,CN=Users,DC=bucketheadland,DC=com",
+			"pass": "!bucketheadland1998",
+			"enctype": "clear",
+			"options": {
+				"LDAP_OPT_DEREF": 1
+			},
+			"basedn": "dc=bucketheadland,dc=com",
+			"userbasedn": "dc=bucketheadland,dc=com",
+			"groupbasedn": "dc=bucketheadland,dc=com",
+			"searchattribute": "samaccountname",
+			"usernameattribute": "samaccountname",
+			"realnameattribute": "cn",
+			"emailattribute": "mail",
+			"grouprequest": "MediaWiki\\Extension\\LDAPProvider\\UserGroupsRequest\\UserMemberOf::factory",
+			"presearchusernamemodifiers": [ "spacestounderscores", "lowercase" ]
+		},
+		"userinfo": [],
+		"authorization": [],
+		"groupsync": {
+			"mapping": {
+				"engineering": "CN=Administrator,OU=Groups,DC=bucketheadland,DC=com",
+				"bureaucrat": "CN=Administrator,OU=Groups,DC=bucketheadland,DC=com",
+				"interface-admin": "CN=Administrator,OU=Groups,DC=bucketheadland,DC=com",
+				"sysop": "CN=Administrator,OU=Groups,DC=bucketheadland,DC=com"
+			}
+		}
+	}
+}
