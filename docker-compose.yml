@@ -1,0 +1,51 @@
+# 'dns' value for each service is the IP address of MS Windows Server
+# that hosts Active Directory Domain Services
+version: '3'
+services:
+  mediawiki:
+    image: localhost:5000/motorwiki
+    ports:
+      - "8080:80"
+    # Example value:
+    # dns:
+    #  - "192.168.50.88"
+    links:
+      - mariadb
+      - elasticsearch
+    # volumes:
+      # First you must run this multi-container app and configure your Wiki
+      # then restart this app and provide your newly configured LocalSettings.php
+      # Example:
+      # - /home/lvefunc/docker/LocalSettings.php:/var/www/html/LocalSettings.php
+      # LDAP configuration file
+      # Refer to https://www.mediawiki.org/wiki/Manual:Active_Directory_Integration
+      # for more info
+      # Example:
+      # - /home/lvefunc/docker/ldap.json:/var/www/html/ldap.json
+  mariadb:
+    image: mariadb
+    ports:
+      - "3306:3306"
+    # Example value:
+    # dns:
+      # - "192.168.50.88"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: wiki
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    # volumes:
+      # Main mariadb volume
+      # Refer to https://hub.docker.com/_/mariadb for more info
+      # - /home/lvefunc/docker/mariadb:/var/lib/mysql
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.5.4
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    # Example value:
+    # dns:
+    #  - "192.168.50.88"
+    # volumes:
+      # Main elasticsearch volume
+      # - /home/lvefunc/docker/esdata:/usr/share/elasticsearch/data
